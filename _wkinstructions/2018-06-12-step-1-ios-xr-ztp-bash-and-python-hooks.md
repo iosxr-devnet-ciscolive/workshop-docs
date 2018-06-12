@@ -29,4 +29,15 @@ Complete CLI support:
 >1) [IOS-XR Bash ZTP hooks](https://xrdocs.io/software-management/tutorials/2016-08-26-working-with-ztp/#ztp_helpersh)
 >2) [IOS-XR Python ZTP library](https://xrdocs.io/software-management/tutorials/2016-08-26-working-with-ztp/#ztp_helpersh)
 
-##
+
+The vagrant environment consisting of two IOS-XRv9k instances must already be running. Verify this by opening up a terminal and running the following commands:
+
+```
+cd ~/topology
+vagrant status
+
+```
+
+{: .notice--info}
+
+## 
