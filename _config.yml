@@ -267,7 +267,7 @@ prose:
     - _config.travis.yml
 
   metadata:
-    _blogs:
+    _wkinstructions:
       - name: "title"
         field:
             element: "text"
