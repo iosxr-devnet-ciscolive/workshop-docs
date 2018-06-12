@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2018-06-12 10:13 -0400'
-title: 'Step 4:  Combining IOS-XR Telemetry and Service Layer APIs'
+title: 'Step 3:  Combining IOS-XR Telemetry and Service Layer APIs'
 author: Akshat Sharma
 tags:
   - iosxr
@@ -107,8 +107,88 @@ Bring back the IPv6 neighbor, and the router will come back to the original stat
 
 ### Drop into the relevant directory
 
+On the devbox, cd into `/vagrant/code/advanced/xrtelemetry-slapi` directory:
 
+```
+vagrant@devbox$ cd /vagrant/code
+vagrant@devbox:code$ ls
+advanced                          ncclient                ydk
+bigmuddy-network-telemetry-proto  service-layer-objmodel  ztp_cli_automation
+vagrant@devbox:code$ cd advanced/
+vagrant@devbox:advanced$ ls
+xrtelemetry-slapi  ydk-slapi-remediation
+vagrant@devbox:advanced$ cd xrtelemetry-slapi/
+vagrant@devbox:xrtelemetry-slapi$ 
+vagrant@devbox:xrtelemetry-slapi$ 
+vagrant@devbox:xrtelemetry-slapi$ 
+
+
+```
+
+### Build the code 
+
+Issue a `make clean` in the directory to make sure you start from a clean slate.
+
+```
+vagrant@devbox:xrtelemetry-slapi$ make clean
+rm -f iosxrtelemetrysubmain  IosxrTelemetrySub.o IosxrTelemetryDecode.o IosxrTelemetryAction.o ServiceLayerRoute.o ServiceLayerAsyncInit.o IosxrTelemetryMain.o
+vagrant@devbox:xrtelemetry-slapi$
+```
+
+
+Now build the code by issuing a `make`
+
+
+```
+vagrant@devbox:xrtelemetry-slapi$ make
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o IosxrTelemetrySub.o IosxrTelemetrySub.cpp
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o IosxrTelemetryDecode.o IosxrTelemetryDecode.cpp
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o IosxrTelemetryAction.o IosxrTelemetryAction.cpp
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o ServiceLayerRoute.o ServiceLayerRoute.cpp
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o ServiceLayerAsyncInit.o ServiceLayerAsyncInit.cpp
+g++ -g -std=c++14 -I/usr/local/include  -I/usr/local/include/xrtelemetry  -pthread -c -o IosxrTelemetryMain.o IosxrTelemetryMain.cpp
+g++ IosxrTelemetrySub.o IosxrTelemetryDecode.o IosxrTelemetryAction.o ServiceLayerRoute.o ServiceLayerAsyncInit.o IosxrTelemetryMain.o -L/usr/local/lib -I/usr/local/include -I/usr/local/include/xrtelemetry -lfolly  -lgrpc++_unsecure -lgrpc -lprotobuf -lpthread -ldl -liosxrsl -lglog -lxrtelemetry  -o iosxrtelemetrysubmain
+vagrant@devbox:xrtelemetry-slapi$ 
+
+
+```
+
+
+
+You should see a binary created called `iosxrtelemetrysubmain`. We will use this to execute our code:
+
+```
+vagrant@devbox:xrtelemetry-slapi$ 
+vagrant@devbox:xrtelemetry-slapi$ ls
+IosxrTelemetryAction.cpp   IosxrTelemetryMain.o   ServiceLayerAsyncInit.cpp
+IosxrTelemetryAction.h     IosxrTelemetrySub.cpp  ServiceLayerAsyncInit.h
+IosxrTelemetryAction.o     IosxrTelemetrySub.h    ServiceLayerAsyncInit.o
+IosxrTelemetryDecode.cpp   iosxrtelemetrysubmain  ServiceLayerException.h
+IosxrTelemetryDecode.h     IosxrTelemetrySub.o    ServiceLayerRoute.cpp
+IosxrTelemetryDecode.o     Makefile               ServiceLayerRoute.h
+IosxrTelemetryException.h  quickstart.h           ServiceLayerRoute.o
+IosxrTelemetryMain.cpp     README.md
+vagrant@devbox:xrtelemetry-slapi$ ls iosxrtelemetrysubmain 
+iosxrtelemetrysubmain
+vagrant@devbox:xrtelemetry-slapi$ 
+
+```
 
 ### Set the gRPC server and port Environment Variables
 
     
+```
+vagrant@devbox:xrtelemetry-slapi$ export SERVER_IP=20.1.1.10
+vagrant@devbox:xrtelemetry-slapi$ export SERVER_PORT=57777
+vagrant@devbox:xrtelemetry-slapi$ 
+
+```
+    
+    
+### Run the code
+
+
+```
+
+
+```
