@@ -32,11 +32,15 @@ Complete CLI support:
 
 >The vagrant environment consisting of two IOS-XRv9k instances must already be running. Verify >this by opening up a terminal and running the following commands:
 >
->```
->cd ~/topology
->vagrant status
-
->```
+>  ```
+>  cd ~/topology
+>  vagrant status
+>
+>  ```
 >
 {: .notice--info}
+
+
+
+
  
