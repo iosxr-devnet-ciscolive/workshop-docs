@@ -50,6 +50,7 @@ Complete CLI support:
 >   above with their current state. For more information about a specific
 >   VM, run `vagrant status NAME`.
 >   cisco@pod2:~/topology$ 
+>  ```
 
 {: .notice--info}
 
