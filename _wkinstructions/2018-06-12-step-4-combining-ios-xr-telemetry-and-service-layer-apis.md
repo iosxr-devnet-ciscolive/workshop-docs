@@ -9,6 +9,9 @@ tags:
   - CLUS2018
   - devnet
   - programmability
+excerpt: >-
+  Combining IOS-XR Telemetry and Service layer APIs to solve a remediation use
+  case
 ---
 
 {% include toc %}
