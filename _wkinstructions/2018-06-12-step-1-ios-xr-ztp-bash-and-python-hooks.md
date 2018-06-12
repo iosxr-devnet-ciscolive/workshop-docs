@@ -37,7 +37,20 @@ Complete CLI support:
 >  vagrant status
 >
 >  ```
+> You should then see something like this:
+>  ```
+>  cisco@pod2:~/topology$ vagrant status
+>  Current machine states:
 >
+>  rtr1                      running (virtualbox)
+>  rtr2                      running (virtualbox)
+>  devbox                    running (virtualbox)
+>
+>   This environment represents multiple VMs. The VMs are all listed
+>   above with their current state. For more information about a specific
+>   VM, run `vagrant status NAME`.
+>   cisco@pod2:~/topology$ 
+
 {: .notice--info}
 
 
