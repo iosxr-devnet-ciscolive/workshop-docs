@@ -8,8 +8,8 @@ tags:
   - cisco
   - devnet
   - CLUS2018
-  - iosxr
   - programmability
+excerpt: Using ZTP hooks in bash and python to automate IOS-XR cli
 ---
 
 
@@ -253,7 +253,3 @@ Building configuration...
 
 vagrant@devbox:ztp_cli_automation$ 
 ```
-
-
-
- 
