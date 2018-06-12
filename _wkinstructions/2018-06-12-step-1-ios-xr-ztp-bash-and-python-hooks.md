@@ -55,6 +55,15 @@ Complete CLI support:
 {: .notice--info}
 
 
+The topology we will be dealing with looks something like this:
+
+![topology.png]({{site.baseurl}}/images/topology.png)
+
+
+## SSH into the devbox 
+
+Drop into the devbox to 
+
 
 
  
