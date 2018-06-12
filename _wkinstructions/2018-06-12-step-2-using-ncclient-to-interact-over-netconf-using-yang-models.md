@@ -8,6 +8,7 @@ tags:
   - cisco
   - clus2018
   - devnet
+excerpt: Using ncclient to work with IOS-XR netconf
 ---
 
 
@@ -332,7 +333,3 @@ RP/0/RP0/CPU0:rtr1#
 
 Excellent! We're good to go.
 {: .notice--success}
-
-
-
-
