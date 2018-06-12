@@ -83,3 +83,32 @@ Ask the proctor for your credentials to access the pod. Click on the "VNC" optio
 
 Keep this open to view the code at any point. Drop back into the terminal to continue.
 
+
+
+
+##  Executing the combined Telemetry and SL-API code
+
+This is the most complex code of this workshop. It is completely written in c++ and leverages gRPC to interact with IOS-XR for both the Telemetry Subscription (using Dial-in) as well as for Service Layer APIs.
+
+The basic purpose of this code is:
+
+1)  **Subscribe to IPv6 neighbor data**:  The Telemetry configuration we applied using ncclient in
+Step 2 earlier, set up the internal telemetry agent in IOS-XR to be ready to send data to external collectors. This data is then used to check the state of the IPv6 neighbors of the designated active path interface:  `GigabitEthernet0/0/0/0`.
+
+2) **Push Active-Path Routes to rtr1 RIB**:  The SL-API client connects to IOS-XR over gRPC in a separate thread and pushes an initial set of application routes into the RIB.
+
+3) **Monitor the Active path's IPv6 neighbors**: Continuously monitor the telemetry stream received by the collector to note the current IPv6 neighbor on the active path interface and generate an event in case the neighbor goes missing (or returns after it is lost).
+
+
+4) **Remediation Action**: If the pre-decided IPv6 neighbor is not found on this interface (because the local interface went down, or the remote interface went down or there was a break in connectivity in the intermediate layer 2 cloud), then the Telemetry client will trigger an event for the SL-API  (integrated code) client to update the routes in RIB to use the backup path as nexthop.
+Bring back the IPv6 neighbor, and the router will come back to the original state.
+
+
+
+### Drop into the relevant directory
+
+
+
+### Set the gRPC server and port Environment Variables
+
+    
