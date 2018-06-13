@@ -108,6 +108,12 @@ Bring back the IPv6 neighbor, and the router will come back to the original stat
 
 
 
+This is illustrated in the figure below:
+
+
+![xrtelemetry-slapi.png]({{site.baseurl}}/images/xrtelemetry-slapi.png)
+
+
 ### Drop into the relevant directory
 
 On the devbox, cd into `/vagrant/code/advanced/xrtelemetry-slapi` directory:
@@ -192,6 +198,14 @@ vagrant@devbox:xrtelemetry-slapi$
 
 
 ```
-
+vagrant@devbox:xrtelemetry-slapi$ 
+vagrant@devbox:xrtelemetry-slapi$ GLOG_v=3 ./iosxrtelemetrysubmain
+vagrant@devbox:xrtelemetry-slapi$ 
 
 ```
+
+
+### Create an event
+
+Since the Telemetry code is monitoring the IPv6 neighbor information on the port Gig0/0/0/0, create events by shutting down the interface Gig0/0/0.
+You will see that the code processes that the Ipv6 neighbor on the interface is lost, causing a failover to the backup path using Service-Layer APIs to inject application routes.
